@@ -15,6 +15,9 @@ const loop = setInterval(() => {
     
     if (pipePosition <= 120){
 
+        pipe.style.animation = 'none';
+        pipe.style.left = `${pipePosition}px`;
+
         
     }
 
