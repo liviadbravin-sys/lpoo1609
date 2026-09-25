@@ -1,23 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Super Mario Dino Runner Extended</title>
   <link rel="stylesheet" href="./css/style.css">
   <script src="./js/script.js" defer></script>
-
-  <title>Mario Jump</title> 
 </head>
 <body>
 
-  <div class="game-board">
+  <!-- Painel de Opções Superiores -->
+  <div class="top-panel">
+    <div class="panel-group">
+      <label>DIFICULDADE:</label>
+      <select id="difficulty-select">
+        <option value="1">FÁCIL (1.0x)</option>
+        <option value="1.5" selected>NORMAL (1.5x)</option>
+        <option value="2">DIFÍCIL (2.0x)</option>
+        <option value="2.5">INSANO (2.5x)</option>
+      </select>
+    </div>
+    <div class="panel-buttons">
+      <button id="btn-sound">🔊 SOM: ATIVO</button>
+      <button id="btn-fullscreen">⛶ TELA CHEIA</button>
+      <button id="btn-restart">🔄 REINICIAR</button>
+    </div>
+  </div>
 
-    <img src="./images/clouds.png" class="clouds">
-    <img src="./images/mario.gif" class="mario">
-    <img src="./images/pipe.png" class="pipe">
+  <!-- Seleção de Heróis -->
+  <div class="hero-selection">
+    <h3>ESCOLHA O HERÓI:</h3>
+    <div class="hero-options">
+      <button class="hero-btn active" data-hero="mario">🍄 MARIO <span>EQUILIBRADO</span></button>
+      <button class="hero-btn" data-hero="luigi">🌿 LUIGI <span>SALTO ALTO</span></button>
+      <button class="hero-btn" data-hero="peach">👑 PEACH <span>FLUTUAR</span></button>
+      <button class="hero-btn" data-hero="toad">⚡ TOAD <span>VELOCIDADE</span></button>
+    </div>
+  </div>
+
+  <!-- Tela Principal do Jogo -->
+  <div class="game-board" id="game-board">
+    
+    <!-- HUD / Placar do Jogo -->
+    <div class="hud">
+      <div class="hud-item">MARIO <br><span id="score">000000</span></div>
+      <div class="hud-item">MOEDAS <br>🪙 x<span id="coins">00</span></div>
+      <div class="hud-item">MUNDO <br><span id="world">WORLD 1-1</span></div>
+      <button id="btn-pause">⏸ PAUSA</button>
+    </div>
+
+    <!-- Título Overlay -->
+    <div class="game-title-overlay" id="game-overlay">
+      <h2>SUPER MARIO DINO RUNNER</h2>
+      <p>PRESSIONE ESPAÇO OU TOQUE NA TELA</p>
+    </div>
+
+    <!-- Elementos do Jogo -->
+    <img src="./images/clouds.png" class="clouds" alt="Nuvens">
+    <img src="./images/mario.gif" class="mario" id="mario" alt="Mario">
+    <img src="./images/pipe.png" class="pipe" id="pipe" alt="Tubo">
+
+    <!-- Tela de Game Over -->
+    <div class="game-over-screen" id="game-over-screen" style="display: none;">
+      <h1>GAME OVER</h1>
+      <p>Pressione 'R' ou clique em Reiniciar</p>
+    </div>
 
   </div>
 
-</body> 
+  <!-- Controles para Telas de Toque (Mobile) -->
+  <div class="mobile-controls">
+    <button class="btn-touch" id="btn-crouch">▼ AGACHAR / TUBO</button>
+    <button class="btn-touch btn-fire" id="btn-fire">🔥 FOGO</button>
+    <button class="btn-touch btn-jump" id="btn-jump">▲ PULAR / FLUTUAR</button>
+  </div>
+
+  <!-- Card de Guia de Controles -->
+  <div class="info-card">
+    <h4>🎮 CONTROLES</h4>
+    <ul>
+      <li><strong>[ESPAÇO] / [▲] / [W]:</strong> Pular alto (segure para flutuar com a Peach)</li>
+      <li><strong>[▼] / [S]:</strong> Agachar / Entrar no Tubo</li>
+      <li><strong>[F]:</strong> Lançar Bola de Fogo</li>
+      <li><strong>[P] / [ESC]:</strong> Pausar / Despausar jogo</li>
+      <li><strong>[R]:</strong> Reiniciar rapidamente</li>
+    </ul>
+  </div>
+
+</body>
 </html>
